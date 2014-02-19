@@ -15,7 +15,6 @@
   background: #ddd;
 }
 
-/* Change background picture based on class name */
 #board .space.veggies {
   background: url("img/veggies.jpg");
   background-size: 100% 100%;
