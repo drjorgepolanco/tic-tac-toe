@@ -7,6 +7,8 @@ var spaces = [
 var player1 = 'veggies';
 var player2 = 'junkfood';
 var playing = null;
+var junkfood = 0;
+var veggies = 0;
 
 function setNextTurn() {
   playing === player1 ? playing = player2 : playing = player1;
@@ -46,6 +48,7 @@ $(document).on('click', '#board .space', function (e) {
 
 $(document).on('game-win', function (e, winner) {
   alert("The winner is " + winner + "!");
+  document.location.reload(true);
 });
 
 setNextTurn();
