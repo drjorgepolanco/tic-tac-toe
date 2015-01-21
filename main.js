@@ -7,8 +7,6 @@ var spaces = [
 var player1 = 'veggies';
 var player2 = 'junkfood';
 var playing = null;
-var junkfood = 0;
-var veggies = 0;
 
 function setNextTurn() {
   playing === player1 ? playing = player2 : playing = player1;
@@ -34,13 +32,11 @@ $(document).on('click', '#board .space', function (e) {
   var spaceNum = $(e.currentTarget).index();
   console.log('You clicked on space #' + spaceNum);
 
-  if (spaces[spaceNum]) {
+  if (spaces[spaceNum])
     alert("This space has already been taken!")
-  } 
-  else {
+  else
     spaces[spaceNum] = playing;
     $('#board .space:eq(' + spaceNum + ')').addClass(playing);
-  };
 
   checkForWinner();
   setNextTurn();
