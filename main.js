@@ -6,19 +6,14 @@ var spaces = [
 
 var player1 = 'veggies';
 var player2 = 'junkfood';
-var currentPlayer = null;
+var playing = null;
 
-var setNextTurn = function () {
-  if (currentPlayer === player1) {
-    currentPlayer = player2;
-  }
-  else {
-    currentPlayer = player1;
-  }
-  $('#turn-label').text(currentPlayer);
+function setNextTurn() {
+  playing === player1 ? playing = player2 : playing = player1;
+  $('#turn-label').text(playing);
 };
 
-var checkForWinner = function () {
+function checkForWinner() {
   if ( spaces[0] === spaces[1] && spaces[1] === spaces[2]
     || spaces[3] === spaces[4] && spaces[4] === spaces[5]
     || spaces[6] === spaces[7] && spaces[7] === spaces[8]
@@ -29,7 +24,7 @@ var checkForWinner = function () {
     || spaces[2] === spaces[4] && spaces[4] === spaces[6] 
   ) {
     console.log('somebody won');
-    $(document).trigger('game-win', currentPlayer);
+    $(document).trigger('game-win', playing);
   }
 };
 
@@ -39,9 +34,10 @@ $(document).on('click', '#board .space', function (e) {
 
   if (spaces[spaceNum]) {
     alert("This space has already been taken!")
-  } else {
-    spaces[spaceNum] = currentPlayer;
-    $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);
+  } 
+  else {
+    spaces[spaceNum] = playing;
+    $('#board .space:eq(' + spaceNum + ')').addClass(playing);
   };
 
   checkForWinner();
